@@ -4,46 +4,52 @@ const { sequelize } = require(".");
 
 module.exports = (sequelize, DataTypes) =>{
 
-    const User = sequelize.define("User",{
-        userID: {
+    const Restaurent = sequelize.define("Restaurent",{
+        restID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
-        
-        userFirstName: {
+        restName: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userLastName: {
+        restAddress: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userBirthday: {
-            type: DataTypes.DATE,
-            allowNull : false
-        },
-        userAddress: {
-            type: DataTypes.STRING,
-            allowNull : false
-        },
-        userEmail: {
+        restEmail: {
             type: DataTypes.STRING,
             allowNull : false,
             unique: true
         },
-        userPassword: {
+        restPassword: {
             type: DataTypes.STRING,
             allowNull : false,
         },
-        userPoints: {
+        restTel: {
             type: DataTypes.INTEGER,
             allowNull : false,
-            defaultValue: 0
-        }
+        },
+        restOpening: {
+            type: DataTypes.TIME,
+            allowNull : false,
+        },
+        restClosing: {
+            type: DataTypes.TIME,
+            allowNull : false,
+        },
+        restDesc: {
+            type: DataTypes.STRING,
+            allowNull : false,
+        },
+        restPic: {
+            type: DataTypes.STRING,
+            allowNull : false,
+        },
     
     })
 
-    return User;
+    return Restaurent;
 }

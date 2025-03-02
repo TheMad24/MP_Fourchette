@@ -4,46 +4,38 @@ const { sequelize } = require(".");
 
 module.exports = (sequelize, DataTypes) =>{
 
-    const User = sequelize.define("User",{
-        userID: {
+    const Admin = sequelize.define("Admin",{
+        adminID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
         
-        userFirstName: {
+        adminFirstName: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userLastName: {
+        adminLastName: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userBirthday: {
-            type: DataTypes.DATE,
-            allowNull : false
-        },
-        userAddress: {
-            type: DataTypes.STRING,
-            allowNull : false
-        },
-        userEmail: {
+        adminUsername: {
             type: DataTypes.STRING,
             allowNull : false,
             unique: true
         },
-        userPassword: {
+        adminEmail: {
             type: DataTypes.STRING,
             allowNull : false,
+            unique: true
         },
-        userPoints: {
-            type: DataTypes.INTEGER,
+        adminPassword: {
+            type: DataTypes.STRING,
             allowNull : false,
-            defaultValue: 0
         }
     
     })
 
-    return User;
+    return Admin;
 }

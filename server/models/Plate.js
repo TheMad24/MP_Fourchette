@@ -4,46 +4,34 @@ const { sequelize } = require(".");
 
 module.exports = (sequelize, DataTypes) =>{
 
-    const User = sequelize.define("User",{
-        userID: {
+    const Plate = sequelize.define("Plate",{
+        plateID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: false
         },
         
-        userFirstName: {
+        plateName: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userLastName: {
+        plateIngredientes: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userBirthday: {
-            type: DataTypes.DATE,
-            allowNull : false
-        },
-        userAddress: {
+        plateDescrition: {
             type: DataTypes.STRING,
             allowNull : false
         },
-        userEmail: {
-            type: DataTypes.STRING,
-            allowNull : false,
-            unique: true
-        },
-        userPassword: {
-            type: DataTypes.STRING,
-            allowNull : false,
-        },
-        userPoints: {
+        platePrice: {
             type: DataTypes.INTEGER,
-            allowNull : false,
-            defaultValue: 0
+            allowNull : false
+        },
+        platePic: {
+            type: DataTypes.STRING,
         }
-    
     })
 
-    return User;
+    return Plate;
 }
