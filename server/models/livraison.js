@@ -3,42 +3,46 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Notification extends Model {
+  class Livraison extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Livraison.belongsTo(models.Order, { foreignKey: 'orderID', as: 'order' });
     }
   }
-  Notification.init({
-    notifID: {
+  Livraison.init({
+    deliveryID: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
   },
-  notifType: {
-      type: DataTypes.INTEGER,
-      allowNull : false
-  },
-  notifMsg: {
+  
+  deliveryAddress: {
       type: DataTypes.STRING,
       allowNull : false
   },
-  notifSentDate: {
-      type: DataTypes.DATE,
-      allowNull : true
+  deliveryPayType: {
+      type: DataTypes.INTEGER,
+      allowNull : false
   },
-  notifSentTime: {
-      type: DataTypes.TIME,
-      allowNull : true
+
+  // FK
+  orderID: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'Orders', 
+      key: 'orderID'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL'
   }
   }, {
     sequelize,
-    modelName: 'Notification',
+    modelName: 'Livraison',
   });
-  return Notification;
+  return Livraison;
 };
