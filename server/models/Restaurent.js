@@ -58,8 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull : false,
   },
   restPic: {
-      type: DataTypes.STRING,
-      allowNull : false,
+      type: DataTypes.STRING
   }
   }, {
     sequelize,
